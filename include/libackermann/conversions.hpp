@@ -1,7 +1,8 @@
 #pragma once
 
+#include <cmath>
+
 #include "types.hpp"
-#include "cmath"
 #include "cassert"
 
 namespace ack {
@@ -17,7 +18,7 @@ namespace ack {
 
         if (ack.speed != 0 && ack.ackermann_angle != 0) {
             // Just an inversion of the twist to ackermann formula
-            ang_yaw = (fabsf(ack.speed) * tanf(ack.ackermann_angle)) / wheelbase;
+            ang_yaw = (std::abs(ack.speed) * std::tan(ack.ackermann_angle)) / wheelbase;
 
             return TwistCommand{ack.speed, ang_yaw};
         } else {
@@ -37,7 +38,7 @@ namespace ack {
 
         if (tw.v_angular_yaw != 0 && tw.v_linear_x != 0) {
             // Remove negative so steering doesn't reverse when reversing.
-            auto vel = fabsf(tw.v_linear_x);
+            auto vel = std::abs(tw.v_linear_x);
 
             auto radius = vel / tw.v_angular_yaw;
 
