@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
+#include "libackermann/libackermann.hpp"
 
-//TODO units
-TEST(tests, test) {
-    EXPECT_TRUE(1);
+TEST(ConversionTests, tta) {
 }
