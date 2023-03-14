@@ -32,6 +32,10 @@ FetchContent_MakeAvailable(libackermann)
 
 target_link_libraries({$PROJECT} libackermann)
 ```
+Note that in ROS, you must apply
+`target_link_libraries({$PROJECT} libackermann)`
+to any unit tests you have aswell, since they are seperate executables under the hood,
+and libackermann will not be automagically applied like ament packages will.
 
 ## Headers
 
